@@ -46,6 +46,11 @@ const IssueList = () => {
   );
 };
 
-const StyledUl = styled.ul``;
+const StyledUl = styled.ul`
+  list-style: none;
+  width: 70%;
+  margin: 0 auto;
+  padding: 0;
+`;
 
 export default IssueList;

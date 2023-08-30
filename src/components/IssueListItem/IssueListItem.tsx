@@ -25,12 +25,32 @@ const IssueListItem = ({ issue, children, onClick }: IssueListItemProps) => {
   );
 };
 
-const StyledList = styled.li``;
-const StyledDiv = styled.div``;
-const StyledTitle = styled.span``;
-const StyledNumber = styled.span``;
-const StyledWriter = styled.span``;
+const StyledList = styled.li`
+  position: relative;
+  padding: 20px 0px 20px 0px;
+  border-bottom: 1px solid #ccc;
+  cursor: pointer;
+`;
+const StyledDiv = styled.div`
+  margin-bottom: 10px;
+`;
+const StyledTitle = styled.span`
+  font-weight: 600;
+  font-size: 18px;
+`;
+const StyledNumber = styled.span`
+  font-weight: 600;
+  font-size: 18px;
+  margin-right: 5px;
+`;
+const StyledWriter = styled.span`
+  margin-right: 5px;
+`;
 const StyledDate = styled.span``;
-const StyledComment = styled.span``;
+const StyledComment = styled.span`
+  position: absolute;
+  right: 0;
+  transform: translateY(-50%);
+`;
 
 export default IssueListItem;
