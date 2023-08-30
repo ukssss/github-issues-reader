@@ -18,18 +18,43 @@ const IssueDetail = ({ issue }: IssueDetailProps) => {
           <StyledDate>만든날짜 : {issue?.created_at}</StyledDate>
           <StyledComments>코멘트 : {issue?.comments}</StyledComments>
         </StyledContainer>
+        {issue?.body}
       </StyledDiv>
     </>
   );
 };
 
-const StyledDiv = styled.div``;
-const StyledContainer = styled.div``;
-const StyledTitle = styled.title``;
-const StyledIssueNumber = styled.div``;
-const StyledWriter = styled.span``;
-const StyledAvatar = styled.img``;
-const StyledComments = styled.span``;
-const StyledDate = styled.span``;
+const StyledDiv = styled.div`
+  width: 1200px;
+  margin: 100px auto;
+  position: relative;
+`;
+const StyledContainer = styled.div`
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+`;
+const StyledTitle = styled.h3`
+  position: absolute;
+  top: -20px;
+  left: 120px;
+`;
+const StyledIssueNumber = styled.div`
+  position: absolute;
+  left: 60px;
+`;
+const StyledWriter = styled.span`
+  margin-left: 10px;
+`;
+const StyledAvatar = styled.img`
+  width: 50px;
+  height: 50px;
+`;
+const StyledComments = styled.span`
+  position: absolute;
+  right: 0;
+`;
+const StyledDate = styled.span`
+  margin-left: 5px;
+`;
 
 export default IssueDetail;
