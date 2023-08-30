@@ -1,6 +1,8 @@
 import React from 'react';
 import { styled } from 'styled-components';
 import { IssueProps } from '@customTypes/index';
+import remarkGfm from 'remark-gfm';
+import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
 
 interface IssueDetailProps {
   issue: IssueProps;
@@ -18,7 +20,7 @@ const IssueDetail = ({ issue }: IssueDetailProps) => {
           <StyledDate>만든날짜 : {issue?.created_at}</StyledDate>
           <StyledComments>코멘트 : {issue?.comments}</StyledComments>
         </StyledContainer>
-        {issue?.body}
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>{issue?.body}</ReactMarkdown>
       </StyledDiv>
     </>
   );
