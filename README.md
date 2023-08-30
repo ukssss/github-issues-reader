@@ -13,7 +13,7 @@ $ npm start
 
 ## 배포 URL
 
-[배포 URL 바로가기](https://pre-onboarding-12th-2-ukss-95amedi9j-ukssss.vercel.app/)
+[작업중](#)
 
 ## 커밋 컨벤션
 
