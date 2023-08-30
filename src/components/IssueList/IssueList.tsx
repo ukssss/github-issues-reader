@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { styled } from 'styled-components';
 import { IssueContext } from '@contexts/index';
-import { Button, IssueListItem } from '@components/index';
+import { Advertisement, Button, IssueListItem } from '@components/index';
 import { useNavigate } from 'react-router-dom';
 import { getIssueDetail, getIssueList } from '@utils/fetchData';
+import { calculateIndex } from '@utils/calculateIndex';
 
 const IssueList = () => {
   const { issueList, fetchIssueList } = useContext(IssueContext);
@@ -23,15 +24,27 @@ const IssueList = () => {
         데이터 낱개 불러오기
       </Button>
       <StyledUl>
-        {issueList.map((issue, index) => (
-          <IssueListItem
-            key={index}
-            issue={issue}
-            onClick={() => {
-              navigate(`/issue/${issue.number}`);
-            }}
-          ></IssueListItem>
-        ))}
+        {issueList.map((issue, index) =>
+          calculateIndex(index + 1) ? (
+            <IssueListItem
+              key={index}
+              issue={issue}
+              onClick={() => {
+                navigate(`/issue/${issue.number}`);
+              }}
+            >
+              <Advertisement />
+            </IssueListItem>
+          ) : (
+            <IssueListItem
+              key={index}
+              issue={issue}
+              onClick={() => {
+                navigate(`/issue/${issue.number}`);
+              }}
+            ></IssueListItem>
+          ),
+        )}
       </StyledUl>
     </div>
   );
