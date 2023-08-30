@@ -15,8 +15,15 @@ const Advertisement = () => {
   );
 };
 
-const StyledList = styled.li``;
-const StyledLink = styled(Link)``;
+const StyledList = styled.li`
+  padding: 20px 0;
+`;
+const StyledLink = styled(Link)`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const StyledImg = styled.img``;
 
 export default Advertisement;
