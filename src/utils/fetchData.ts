@@ -35,7 +35,7 @@ export const getIssueList = async ({ perPage, page }: GetIssueListProps) => {
   }
 };
 
-export const getIssueDetail = async ({ issueNumber }: GetIssueDetailProps) => {
+export const getIssueDetail = async (issueNumber: number) => {
   try {
     const res = await octokit.request(
       `GET /repos/${OWNER_NAME}/${REPO_NAME}/issues/${issueNumber}`,
