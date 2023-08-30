@@ -1,5 +1,6 @@
 import { getIssueDetail, getIssueList } from '@utils/fetchData';
 import React, { createContext, useState } from 'react';
+import { IssueProps } from '@customTypes/index';
 
 interface IssueContextProps {
   issueList: IssueProps[];
@@ -38,7 +39,7 @@ export const IssueProvider = ({ children }: IssueProviderProps) => {
 
   const fetchIssueDetail = async (issueNumber: number) => {
     try {
-      const data = await getIssueDetail({ issueNumber: issueNumber });
+      const data = await getIssueDetail(issueNumber);
       setIssueDetail(data);
     } catch (err) {
       throw err;

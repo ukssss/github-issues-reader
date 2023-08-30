@@ -1,31 +1,23 @@
 import React from 'react';
 import { styled } from 'styled-components';
-
-interface Issue {
-  id: number;
-  number: number;
-  title: string;
-  user: {
-    login: string;
-  };
-  comments: number;
-}
+import { IssueProps } from '@customTypes/index';
 
 interface IssueListItemProps {
-  issue: Issue;
+  issue: IssueProps;
   children?: React.ReactNode;
+  onClick: () => void;
 }
 
-const IssueListItem = ({ issue, children, ...restProps }: IssueListItemProps) => {
+const IssueListItem = ({ issue, children, onClick }: IssueListItemProps) => {
   return (
     <>
-      <StyledList key={issue.id} {...restProps}>
+      <StyledList key={issue.id} onClick={onClick}>
         <StyledDiv>
           <StyledNumber>#{issue.number}</StyledNumber>
           <StyledTitle>{issue.title}</StyledTitle>
         </StyledDiv>
         <StyledWriter>작성자 : {issue.user.login}</StyledWriter>
-        <StyledDate></StyledDate>
+        <StyledDate>작성일 : {issue.created_at}</StyledDate>
         <StyledComment>코멘트 : {issue.comments}</StyledComment>
       </StyledList>
       {children}
