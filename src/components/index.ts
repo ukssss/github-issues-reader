@@ -4,3 +4,4 @@ export { default as IssueListItem } from './IssueListItem/IssueListItem';
 export { default as Advertisement } from './Advertisement/Advertisement';
 export { default as IssueDetail } from './IssueDetail/IssueDetail';
 export { default as Button } from './Button/Button';
+export { default as ScrollObserver } from './ScrollObserver/ScrollObserver';
