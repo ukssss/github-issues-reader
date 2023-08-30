@@ -14,7 +14,15 @@ const Header = ({}: HeaderProps) => {
   );
 };
 
-const StyledH1 = styled.h1``;
-const StyledLink = styled(Link)``;
+const StyledH1 = styled.h1`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+`;
 
 export default Header;
