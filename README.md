@@ -2,9 +2,9 @@
 
 ## 프로젝트 소개
 
-- 주제 : 특정 깃헙 레파지토리([Issues React]('https://github.com/facebook/react/issues'))의 이슈 목록과 상세 내용을 확인하는 웹 사이트 구축
+- 주제 : 특정 깃헙 레파지토리([Issues React](https://github.com/facebook/react/issues))의 이슈 목록과 상세 내용을 확인하는 웹 사이트 구축
 - 작업 기간 : 2023.08.29 - 2023.09.01
-- 팀 레포지토리 : [바로가기]('https://github.com/pre-onboarding-12th-team3/pre-onboarding-12th-2-3')
+- 팀 레포지토리 : [바로가기](https://github.com/pre-onboarding-12th-team3/pre-onboarding-12th-2-3)
 
 ## 배포 URL
 
