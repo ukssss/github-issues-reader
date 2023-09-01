@@ -1,15 +1,14 @@
-import React, { useContext, useEffect } from 'react';
 import { IssueDetail } from '@components/index';
 import { IssueContext } from '@contexts/index';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 const DetailPage = () => {
-  const { issueNumber } = useParams();
+  const { id } = useParams();
   const { issueDetail, fetchIssueDetail } = useContext(IssueContext);
 
   useEffect(() => {
-    if (issueNumber) {
-      const id = parseInt(issueNumber);
+    if (id) {
       fetchIssueDetail(id);
     }
   }, []);

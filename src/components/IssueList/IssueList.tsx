@@ -25,7 +25,7 @@ const IssueList = () => {
               key={index}
               issue={issue}
               onClick={() => {
-                navigate(`/issue/${issue.number}`);
+                navigate(`/issues/${issue.number}`);
               }}
             >
               <Advertisement />
@@ -35,7 +35,7 @@ const IssueList = () => {
               key={index}
               issue={issue}
               onClick={() => {
-                navigate(`/issue/${issue.number}`);
+                navigate(`/issues/${issue.number}`);
               }}
             ></IssueListItem>
           ),
@@ -48,9 +48,6 @@ const IssueList = () => {
 
 const StyledUl = styled.ul`
   list-style: none;
-  width: 70%;
-  margin: 0 auto;
-  padding: 0;
 `;
 
 export default IssueList;

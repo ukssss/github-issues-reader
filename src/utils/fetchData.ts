@@ -15,7 +15,7 @@ export const getIssueList = async (page: number) => {
       state: 'open',
       sort: 'comments',
       per_page: PER_PAGE,
-      page: page,
+      page,
     });
 
     return res.data;
@@ -24,12 +24,14 @@ export const getIssueList = async (page: number) => {
   }
 };
 
-export const getIssueDetail = async (issueNumber: number) => {
+export const getIssueDetail = async (issueNumber: string) => {
+  const issue_number = parseInt(issueNumber);
+
   try {
     const res = await octokit.request(API_URL_DETAIL, {
       owner: OWNER,
       repo: REPO,
-      issue_number: issueNumber,
+      issue_number,
     });
 
     return res.data;

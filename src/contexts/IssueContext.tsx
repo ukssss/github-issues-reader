@@ -6,7 +6,7 @@ interface IssueContextProps {
   issueList: IssueProps[];
   issueDetail: IssueProps | null;
   fetchIssueList: () => Promise<void>;
-  fetchIssueDetail: (issueNumber: number) => Promise<void>;
+  fetchIssueDetail: (issueNumber: string) => Promise<void>;
   isLoading: boolean;
 }
 
@@ -43,7 +43,7 @@ export const IssueProvider = ({ children }: IssueProviderProps) => {
     }
   };
 
-  const fetchIssueDetail = async (issueNumber: number) => {
+  const fetchIssueDetail = async (issueNumber: string) => {
     setIsLoading(true);
     try {
       const data = await getIssueDetail(issueNumber);
