@@ -27,7 +27,7 @@ const IssueListItem = ({ issue, children, onClick }: IssueListItemProps) => {
 
 const StyledList = styled.li`
   position: relative;
-  padding: 20px 0px 20px 0px;
+  padding: 20px 0;
   border-bottom: 1px solid #ccc;
   cursor: pointer;
 `;
