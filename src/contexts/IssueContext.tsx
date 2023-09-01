@@ -33,7 +33,7 @@ export const IssueProvider = ({ children }: IssueProviderProps) => {
   const fetchIssueList = async () => {
     setIsLoading(true);
     try {
-      const data = await getIssueList({ perPage: 20, page: page });
+      const data = await getIssueList(page);
       setPage(prev => prev + 1);
       setIssueList(prev => [...prev, ...data]);
     } catch (err) {

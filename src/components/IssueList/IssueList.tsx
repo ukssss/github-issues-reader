@@ -1,11 +1,11 @@
-import React, { useContext, useEffect } from 'react';
-import { styled } from 'styled-components';
-import { IssueContext } from '@contexts/index';
 import { Advertisement, IssueListItem, ScrollObserver } from '@components/index';
-import { useNavigate } from 'react-router-dom';
-import { calculateIndex } from '@utils/calculateIndex';
+import { IssueContext } from '@contexts/index';
 import useInfiniteScroll from '@hooks/useInfiniteScroll';
+import { calculateIndex } from '@utils/calculateIndex';
 import { getIssueList } from '@utils/fetchData';
+import { useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 const IssueList = () => {
   const { issueList, fetchIssueList } = useContext(IssueContext);
@@ -13,7 +13,7 @@ const IssueList = () => {
   const target = useInfiniteScroll(fetchIssueList);
 
   useEffect(() => {
-    getIssueList({ perPage: 10, page: 1 });
+    getIssueList(1);
   }, []);
 
   return (

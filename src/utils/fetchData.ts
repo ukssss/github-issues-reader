@@ -1,32 +1,22 @@
+import { API_URL, API_URL_DETAIL, OWNER, PER_PAGE, REPO } from '@constants/apiConstants';
 import { Octokit } from '@octokit/rest';
 
-export interface GetIssueListProps {
-  perPage: number;
-  page: number;
-}
-
-export interface GetIssueDetailProps {
-  issueNumber: number;
-}
-
 const ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN;
-const OWNER_NAME = 'facebook';
-const REPO_NAME = 'react';
 
 const octokit = new Octokit({
   auth: ACCESS_TOKEN,
 });
 
-export const getIssueList = async ({ perPage, page }: GetIssueListProps) => {
+export const getIssueList = async (page: number) => {
   try {
-    const res = await octokit.request(
-      `GET /repos/${OWNER_NAME}/${REPO_NAME}/issues?per_page=${perPage}&page=${page}&sort=comments`,
-      {
-        headers: {
-          'X-GitHub-Api-Version': '2022-11-28',
-        },
-      },
-    );
+    const res = await octokit.request(API_URL, {
+      owner: OWNER,
+      repo: REPO,
+      state: 'open',
+      sort: 'comments',
+      per_page: PER_PAGE,
+      page: page,
+    });
 
     return res.data;
   } catch (err) {
@@ -36,14 +26,11 @@ export const getIssueList = async ({ perPage, page }: GetIssueListProps) => {
 
 export const getIssueDetail = async (issueNumber: number) => {
   try {
-    const res = await octokit.request(
-      `GET /repos/${OWNER_NAME}/${REPO_NAME}/issues/${issueNumber}`,
-      {
-        headers: {
-          'X-GitHub-Api-Version': '2022-11-28',
-        },
-      },
-    );
+    const res = await octokit.request(API_URL_DETAIL, {
+      owner: OWNER,
+      repo: REPO,
+      issue_number: issueNumber,
+    });
 
     return res.data;
   } catch (err) {
