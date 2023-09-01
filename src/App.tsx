@@ -1,12 +1,11 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import { MainPage, DetailPage, ErrorPage } from '@pages/index';
-import { Header } from '@components/index';
+import { Header, Loading } from '@components/index';
+import { DetailPage, ErrorPage, MainPage } from '@pages/index';
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <Router>
-      <Suspense fallback="Loading result,,,">
+    <>
+      <Router>
         <Header />
         <Routes>
           <Route path="/" element={<MainPage />} />
@@ -14,8 +13,9 @@ function App() {
           <Route path="/error" element={<ErrorPage />} />
           <Route path="*" element={<Navigate to="/error" />} />
         </Routes>
-      </Suspense>
-    </Router>
+      </Router>
+      <Loading />
+    </>
   );
 }
 
