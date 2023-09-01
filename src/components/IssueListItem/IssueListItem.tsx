@@ -1,6 +1,6 @@
+import { IssueProps } from '@customTypes/index';
 import React from 'react';
 import { styled } from 'styled-components';
-import { IssueProps } from '@customTypes/index';
 
 interface IssueListItemProps {
   issue: IssueProps;

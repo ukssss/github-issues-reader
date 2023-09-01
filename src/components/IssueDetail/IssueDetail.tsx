@@ -1,8 +1,7 @@
-import React from 'react';
-import { styled } from 'styled-components';
 import { IssueProps } from '@customTypes/index';
-import remarkGfm from 'remark-gfm';
 import { ReactMarkdown } from 'react-markdown/lib/react-markdown';
+import remarkGfm from 'remark-gfm';
+import { styled } from 'styled-components';
 
 interface IssueDetailProps {
   issue: IssueProps;
@@ -27,8 +26,6 @@ const IssueDetail = ({ issue }: IssueDetailProps) => {
 };
 
 const StyledDiv = styled.div`
-  width: 1200px;
-  margin: 100px auto;
   position: relative;
 `;
 const StyledContainer = styled.div`
