@@ -1,22 +1,23 @@
 import { Header, Loading } from '@components/index';
-import { DetailPage, ErrorPage, MainPage } from '@pages/index';
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 function App() {
   return (
     <>
-      <Router>
-        <Header />
-        <Routes>
-          <Route path="/" element={<MainPage />} />
-          <Route path="/issue/:issueNumber" element={<DetailPage />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="*" element={<Navigate to="/error" />} />
-        </Routes>
-      </Router>
+      <Header />
+      <Main>
+        <Outlet />
+      </Main>
       <Loading />
     </>
   );
 }
+
+const Main = styled.main`
+  width: 70%;
+  margin: 120px auto 0 auto;
+  padding: 0;
+`;
 
 export default App;
