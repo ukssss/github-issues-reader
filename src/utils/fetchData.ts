@@ -28,7 +28,6 @@ export const getIssueList = async ({ perPage, page }: GetIssueListProps) => {
       },
     );
 
-    console.log('Issues: ', res.data);
     return res.data;
   } catch (err) {
     throw err;
@@ -46,7 +45,6 @@ export const getIssueDetail = async (issueNumber: number) => {
       },
     );
 
-    console.log('IssueNumber: ', res.data);
     return res.data;
   } catch (err) {
     throw err;
