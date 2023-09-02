@@ -106,7 +106,76 @@ src
 
 #### 1. octokit 을 통한 Github Repository Request
 
-작업중
+- octokit을 통한 이슈 목록, 이슈 상세 정보 불러오기
+
+  ```tsx
+  export const getIssueList = async (page: number) => {
+    try {
+      const res = await octokit.request(API_URL, {
+        owner: OWNER,
+        repo: REPO,
+        state: 'open',
+        sort: 'comments',
+        per_page: PER_PAGE,
+        page,
+      });
+
+      return res.data;
+    } catch (err) {
+      throw err;
+    }
+  };
+
+  export const getIssueDetail = async (issueNumber: string) => {
+    const issue_number = parseInt(issueNumber);
+
+    try {
+      const res = await octokit.request(API_URL_DETAIL, {
+        owner: OWNER,
+        repo: REPO,
+        issue_number,
+      });
+
+      return res.data;
+    } catch (err) {
+      throw err;
+    }
+  };
+  ```
+
+  - getIssueList 에서는 한 번에 보여줄 페이지 수를 입력받아 open 상태의 이슈 중 코멘트가 많은 순으로 정렬해서 이슈 목록을 가져오도록 설계.
+  - getIssueDetail 에서는 이슈 번호를 입력받아 해당 이슈에 관한 상세 정보를 가져오도록 설계.
+
+- contextAPI 를 사용하여 전역으로 이슈 데이터를 제공
+
+  ```tsx
+  const fetchIssueList = async () => {
+    setIsLoading(true);
+    try {
+      const data = await getIssueList(page);
+      setPage(prev => prev + 1);
+      setIssueList(prev => [...prev, ...data]);
+    } catch (err) {
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchIssueDetail = async (issueNumber: string) => {
+    setIsLoading(true);
+    try {
+      const data = await getIssueDetail(issueNumber);
+      setIssueDetail(data);
+    } catch (err) {
+      throw err;
+    } finally {
+      setIsLoading(false);
+    }
+  };
+  ```
+
+  - fetchIssueList, fetchIssueDetail (이)가 실행되면 getIssueList 가 실행되어 새로운 데이터로 변경되며, setIssueList 를 통해 이전 데이터에 새로운 데이터를 추가하는 방식으로 구성
 
 #### 2. intersectionObserver 사용을 통한 인피니티 스크롤(Infinity Scroll) 구현
 
